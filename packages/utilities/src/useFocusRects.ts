@@ -108,9 +108,15 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let onPointerDown: (ev: PointerEvent) => void;
     let onKeyDown: (ev: KeyboardEvent) => void;
     let onKeyUp: (ev: KeyboardEvent) => void;
-    if (context?.providerRef?.current) {
+    if (
+      context?.providerRef?.current &&
+      (context?.providerRef?.current as Partial<Pick<HTMLElement, 'addEventListener'>>)?.addEventListener
+    ) {
       el = context.providerRef.current;
-      const callbacks = setCallbackMap(context);
+      // The NOINLINE directive tells terser not to move the setCallbackMap implementation into the call site during
+      // minification.
+      // This prevents the function from capturing additional variables in the closure, which can cause memory leaks.
+      const callbacks = /*@__NOINLINE__*/ setCallbackMap(context);
       onMouseDown = callbacks.onMouseDown;
       onPointerDown = callbacks.onPointerDown;
       onKeyDown = callbacks.onKeyDown;
@@ -174,14 +180,14 @@ function _onPointerDown(ev: PointerEvent, registeredProviders?: React.RefObject<
 // This works because `classList.add` is smart and will not duplicate a classname that already exists on the classList
 // when focus visibility is turned on.
 function _onKeyDown(ev: KeyboardEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element, registeredProviders);
   }
 }
 
 function _onKeyUp(ev: KeyboardEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element, registeredProviders);
   }

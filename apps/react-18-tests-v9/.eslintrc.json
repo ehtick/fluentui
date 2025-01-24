@@ -1,8 +1,7 @@
 {
-  "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
   "root": true,
   "rules": {
-    "deprecation/deprecation": "off",
-    "prefer-const": "off"
+    "@nx/workspace-no-restricted-globals": "off"
   }
 }

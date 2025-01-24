@@ -55,6 +55,12 @@ exports[`ColorPicker renders correctly 1`] = `
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
               outline: 2px solid CanvasText;
             }
+            :host(.ms-Fabric--isFocusVisible) &:focus {
+              outline: 1px solid #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
+              outline: 2px solid CanvasText;
+            }
         data-is-focusable="true"
         role="slider"
         style="background-color: rgb(0, 128, 255);"
@@ -1210,6 +1216,12 @@ exports[`ColorPicker renders correctly with preview 1`] = `
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
               outline: 2px solid CanvasText;
             }
+            :host(.ms-Fabric--isFocusVisible) &:focus {
+              outline: 1px solid #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
+              outline: 2px solid CanvasText;
+            }
         data-is-focusable="true"
         role="slider"
         style="background-color: rgb(0, 128, 255);"
@@ -1428,6 +1440,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                 is-preview
                 {
                   border: 1px solid #c8c6c4;
+                  forced-color-adjust: none;
                   height: 48px;
                   margin-bottom: 0;
                   margin-left: 8px;
@@ -2386,6 +2399,12 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
               outline: 1px solid #605e5c;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
+              outline: 2px solid CanvasText;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus {
+              outline: 1px solid #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus {
               outline: 2px solid CanvasText;
             }
         data-is-focusable="true"

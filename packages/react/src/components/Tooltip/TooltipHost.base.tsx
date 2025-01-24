@@ -16,6 +16,8 @@ import { TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
 import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx } from '../../utilities/dom';
 
 export interface ITooltipHostState {
   /** @deprecated No longer used internally */
@@ -30,6 +32,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     delay: TooltipDelay.medium,
   };
 
+  public static contextType = WindowContext;
   private static _currentVisibleTooltip: ITooltipHost | undefined;
 
   // The wrapping div that gets the hover events
@@ -52,8 +55,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       isAriaPlaceholderRendered: false,
       isTooltipVisible: false,
     };
-
-    this._async = new Async(this);
   }
 
   // Render
@@ -66,7 +67,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       directionalHintForRTL,
       hostClassName: className,
       id,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       setAriaDescribedBy = true,
       tooltipProps,
       styles,
@@ -80,7 +81,29 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
 
     const { isTooltipVisible } = this.state;
     const tooltipId = id || this._defaultTooltipId;
-    const tooltipContent = tooltipProps?.onRenderContent ? tooltipProps.onRenderContent() : content;
+
+    const tooltipRenderProps = {
+      id: `${tooltipId}--tooltip`,
+      content,
+      targetElement: this._getTargetElement(),
+      directionalHint,
+      directionalHintForRTL,
+      calloutProps: assign({}, calloutProps, {
+        onDismiss: this._hideTooltip,
+        onFocus: this._onTooltipContentFocus,
+        onMouseEnter: this._onTooltipMouseEnter,
+        onMouseLeave: this._onTooltipMouseLeave,
+      }),
+      onMouseEnter: this._onTooltipMouseEnter,
+      onMouseLeave: this._onTooltipMouseLeave,
+      ...getNativeProps(this.props, divProperties, ['id']), // Make sure we use the id above
+      ...tooltipProps,
+    };
+
+    // Get the content of the tooltip for use in the hidden div used for screen readers
+    const tooltipContent = tooltipProps?.onRenderContent
+      ? tooltipProps.onRenderContent(tooltipRenderProps, props => (props?.content ? <>{props.content}</> : null))
+      : content;
     const showTooltip = isTooltipVisible && !!tooltipContent;
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && !!tooltipContent ? tooltipId : undefined;
 
@@ -98,30 +121,16 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
         aria-describedby={ariaDescribedBy}
       >
         {children}
-        {showTooltip && (
-          <Tooltip
-            id={`${tooltipId}--tooltip`}
-            content={content}
-            targetElement={this._getTargetElement()}
-            directionalHint={directionalHint}
-            directionalHintForRTL={directionalHintForRTL}
-            calloutProps={assign({}, calloutProps, {
-              onDismiss: this._hideTooltip,
-              onFocus: this._onTooltipContentFocus,
-              onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave,
-            })}
-            onMouseEnter={this._onTooltipMouseEnter}
-            onMouseLeave={this._onTooltipMouseLeave}
-            {...getNativeProps(this.props, divProperties, ['id'])} // Make sure we use the id above
-            {...tooltipProps}
-          />
-        )}
+        {showTooltip && <Tooltip {...tooltipRenderProps} />}
         <div hidden={true} id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
           {tooltipContent}
         </div>
       </div>
     );
+  }
+
+  public componentDidMount(): void {
+    this._async = new Async(this);
   }
 
   public componentWillUnmount(): void {
@@ -188,7 +197,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     // checking if the blurred element is still the document's activeElement,
     // and ignoring when it next gets focus back.
     // See https://github.com/microsoft/fluentui/issues/13541
-    this._ignoreNextFocusEvent = document?.activeElement === ev.target;
+    this._ignoreNextFocusEvent = getDocumentEx(this.context)?.activeElement === ev.target;
 
     this._dismissTimerId = this._async.setTimeout(() => {
       this._hideTooltip();
@@ -198,6 +207,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   // Show Tooltip
   private _onTooltipMouseEnter = (ev: any): void => {
     const { overflowMode, delay } = this.props;
+    const doc = getDocumentEx(this.context);
 
     if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip !== this) {
       TooltipHostBase._currentVisibleTooltip.dismiss();
@@ -211,7 +221,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       }
     }
 
-    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement())) {
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement(), doc)) {
       // Do not show tooltip when target is inside a portal relative to TooltipHost.
       return;
     }
@@ -251,7 +261,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   };
 
   private _onTooltipKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if ((ev.which === KeyCodes.escape || ev.ctrlKey) && this.state.isTooltipVisible) {
       this._hideTooltip();
       ev.stopPropagation();

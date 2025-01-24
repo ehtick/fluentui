@@ -49,10 +49,22 @@ var siteInfo = [
     title: 'Experiments',
   },
   {
+    package: '@fluentui/chart-docsite',
+    link: './chart-docsite/storybook/index.html',
+    icon: 'BarChart4',
+    title: 'Charts v9',
+  },
+  {
     package: '@fluentui/react-charting',
     link: './react-charting/demo/index.html',
     icon: 'BarChart4',
     title: 'Charting',
+  },
+  {
+    package: '@fluentui/chart-web-components',
+    link: './chart-web-components/storybook/index.html',
+    icon: 'BarChart4',
+    title: 'Chart web components',
   },
   {
     package: '@fluentui/theming-designer',
@@ -92,7 +104,9 @@ if (hrefMatch) {
     link.href = repoUrl + '/tree/' + hrefMatch[2];
     // remove the PR-specific explanation
     var prExplanation = document.getElementById('prExplanation');
-    prExplanation.parentElement.removeChild(prExplanation);
+    if (prExplanation && prExplanation.parentElement) {
+      prExplanation.parentElement.removeChild(prExplanation);
+    }
   } else {
     // PR
     // eslint-disable-next-line @microsoft/sdl/no-inner-html -- Only used during PR publish, not production code.
@@ -118,6 +132,8 @@ siteInfo.forEach(function (info) {
       info.title +
       '</a>';
 
-    siteLink.appendChild(li);
+    if (siteLink) {
+      siteLink.appendChild(li);
+    }
   }
 });

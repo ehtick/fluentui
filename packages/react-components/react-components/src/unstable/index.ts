@@ -1,5 +1,13 @@
-// Stub for unstable exports
+// =====================================================================================================
+//                                    ⚠️ IMPORTANT:
+// =====================================================================================================
+// - `/unstable` api is DEPRECATED
+// - adding new API exports to this file is FORBIDDEN ( except `react-virtualizer` )
+// - modifying any existing exports in this file is FORBIDDEN
+// - use/consume `*-preview` packages directly for preview/unstable Fluent UI core controls early access
+// =====================================================================================================
 
+/* eslint-disable @typescript-eslint/no-deprecated */
 export {
   Alert,
   alertClassNames,
@@ -8,315 +16,350 @@ export {
   useAlert_unstable,
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
-export {
-  AvatarGroup,
-  AvatarGroupItem,
-  AvatarGroupPopover,
-  AvatarGroupProvider,
-  avatarGroupClassNames,
-  avatarGroupItemClassNames,
-  avatarGroupPopoverClassNames,
-  partitionAvatarGroupItems,
-  renderAvatarGroup_unstable,
-  renderAvatarGroupItem_unstable,
-  renderAvatarGroupPopover_unstable,
-  useAvatarGroup_unstable,
-  useAvatarGroupContext_unstable,
-  useAvatarGroupItem_unstable,
-  useAvatarGroupItemStyles_unstable,
-  useAvatarGroupPopover_unstable,
-  useAvatarGroupPopoverStyles_unstable,
-  useAvatarGroupStyles_unstable,
-} from '@fluentui/react-avatar';
-export type {
-  AvatarGroupProps,
-  AvatarGroupSlots,
-  AvatarGroupState,
-  AvatarGroupItemProps,
-  AvatarGroupItemSlots,
-  AvatarGroupItemState,
-  AvatarGroupPopoverProps,
-  AvatarGroupPopoverSlots,
-  AvatarGroupPopoverState,
-  PartitionAvatarGroupItems,
-  PartitionAvatarGroupItemsOptions,
-} from '@fluentui/react-avatar';
-export {
-  Card,
-  CardFooter,
-  CardHeader,
-  CardPreview,
-  cardClassNames,
-  cardCSSVars,
-  cardFooterClassNames,
-  cardHeaderClassNames,
-  cardHeaderCSSVars,
-  cardPreviewClassNames,
-  renderCard_unstable,
-  renderCardFooter_unstable,
-  renderCardHeader_unstable,
-  renderCardPreview_unstable,
-  useCard_unstable,
-  useCardFooter_unstable,
-  useCardFooterStyles_unstable,
-  useCardHeader_unstable,
-  useCardHeaderStyles_unstable,
-  useCardPreview_unstable,
-  useCardPreviewStyles_unstable,
-  useCardStyles_unstable,
-} from '@fluentui/react-card';
-export type {
-  CardFooterProps,
-  CardFooterSlots,
-  CardFooterState,
-  CardHeaderProps,
-  CardHeaderSlots,
-  CardHeaderState,
-  CardPreviewProps,
-  CardPreviewSlots,
-  CardPreviewState,
-  CardProps,
-  CardSlots,
-  CardState,
-} from '@fluentui/react-card';
-export {
-  Combobox,
-  renderCombobox_unstable,
-  comboboxClassNames,
-  useComboboxStyles_unstable,
-  useCombobox_unstable,
-  Dropdown,
-  renderDropdown_unstable,
-  dropdownClassNames,
-  useDropdownStyles_unstable,
-  useDropdown_unstable,
-  Listbox,
-  renderListbox_unstable,
-  listboxClassNames,
-  useListboxStyles_unstable,
-  useListbox_unstable,
-  Option,
-  renderOption_unstable,
-  optionClassNames,
-  useOptionStyles_unstable,
-  useOption_unstable,
-  OptionGroup,
-  renderOptionGroup_unstable,
-  optionGroupClassNames,
-  useOptionGroupStyles_unstable,
-  useOptionGroup_unstable,
-} from '@fluentui/react-combobox';
-export type {
-  ComboboxProps,
-  ComboboxContextValues,
-  ComboboxOpenChangeData,
-  ComboboxOpenEvents,
-  ComboboxSlots,
-  ComboboxState,
-  DropdownProps,
-  DropdownContextValues,
-  DropdownOpenChangeData,
-  DropdownOpenEvents,
-  DropdownSlots,
-  DropdownState,
-  ListboxContextValues,
-  ListboxProps,
-  ListboxSlots,
-  ListboxState,
-  OptionProps,
-  OptionSlots,
-  OptionState,
-  OptionGroupProps,
-  OptionGroupSlots,
-  OptionGroupState,
-} from '@fluentui/react-combobox';
-export {
-  Select,
-  renderSelect_unstable,
-  selectClassNames,
-  useSelectStyles_unstable,
-  useSelect_unstable,
-} from '@fluentui/react-select';
-export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
-  Toolbar,
-  ToolbarButton,
-  ToolbarDivider,
-  ToolbarToggleButton,
-  renderToolbar_unstable,
-  toolbarClassNames,
-  useToolbar_unstable,
-  useToolbarDividerStyles_unstable,
-  useToolbarStyles_unstable,
-} from '@fluentui/react-toolbar';
+  InfoButton,
+  infoButtonClassNames,
+  useInfoButton_unstable,
+  useInfoButtonStyles_unstable,
+  renderInfoButton_unstable,
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+} from '@fluentui/react-infobutton';
+export type {
+  InfoButtonProps,
+  InfoButtonSlots,
+  InfoButtonState,
+  InfoLabelProps,
+  InfoLabelSlots,
+  InfoLabelState,
+} from '@fluentui/react-infobutton';
+/* eslint-enable @typescript-eslint/no-deprecated */
+
+export {
+  Virtualizer,
+  virtualizerClassNames,
+  useVirtualizer_unstable,
+  renderVirtualizer_unstable,
+  useVirtualizerStyles_unstable,
+  useIntersectionObserver,
+  useStaticVirtualizerMeasure,
+  useDynamicVirtualizerMeasure,
+  useResizeObserverRef_unstable,
+  VirtualizerContextProvider,
+  useVirtualizerContext_unstable,
+  VirtualizerScrollView,
+  virtualizerScrollViewClassNames,
+  useVirtualizerScrollView_unstable,
+  renderVirtualizerScrollView_unstable,
+  useVirtualizerScrollViewStyles_unstable,
+  VirtualizerScrollViewDynamic,
+  virtualizerScrollViewDynamicClassNames,
+  useVirtualizerScrollViewDynamic_unstable,
+  renderVirtualizerScrollViewDynamic_unstable,
+  useVirtualizerScrollViewDynamicStyles_unstable,
+  scrollToItemDynamic,
+  scrollToItemStatic,
+} from '@fluentui/react-virtualizer';
 
 export type {
-  ToolbarButtonProps,
-  ToolbarButtonState,
-  ToolbarContextValue,
-  ToolbarContextValues,
-  ToolbarDividerProps,
-  ToolbarDividerState,
-  ToolbarProps,
-  ToolbarSlots,
-  ToolbarState,
-  ToolbarToggleButtonProps,
-  ToolbarToggleButtonState,
-} from '@fluentui/react-toolbar';
+  VirtualizerProps,
+  VirtualizerState,
+  VirtualizerSlots,
+  VirtualizerChildRenderFunction,
+  VirtualizerScrollViewProps,
+  VirtualizerScrollViewState,
+  VirtualizerScrollViewSlots,
+  VirtualizerContextProps,
+  VirtualizerScrollViewDynamicProps,
+  VirtualizerScrollViewDynamicState,
+  VirtualizerScrollViewDynamicSlots,
+  VirtualizerMeasureDynamicProps,
+  VirtualizerMeasureProps,
+  ResizeCallbackWithRef,
+  ScrollToInterface,
+  ScrollToItemDynamicParams,
+  ScrollToItemStaticParams,
+} from '@fluentui/react-virtualizer';
 
 export {
-  Overflow,
-  OverflowItem,
-  useIsOverflowGroupVisible,
-  useIsOverflowItemVisible,
-  useOverflowMenu,
-  DATA_OVERFLOWING,
-  DATA_OVERFLOW_MENU,
-  DATA_OVERFLOW_ITEM,
-} from '@fluentui/react-overflow';
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  Tree,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  TreeItem,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  FlatTree,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  TreeProvider,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  TreeItemLayout,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  TreeItemProvider,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  TreeItemPersonaLayout,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeContext_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeContextValues_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeItemContext_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeItemContextValues_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useFlatTreeContextValues_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTree_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeItem_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeItemLayout_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeItemPersonaLayout_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  renderTree_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  renderTreeItem_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  renderTreeItemPersonaLayout_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  renderTreeItemLayout_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeStyles_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeItemStyles_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeItemPersonaLayoutStyles_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useTreeItemLayoutStyles_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  treeItemPersonaLayoutClassNames,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  treeItemLevelToken,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  treeItemLayoutClassNames,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  treeItemClassNames,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  treeClassNames,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  flatTreeClassNames,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useFlatTree_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useHeadlessFlatTree_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  useFlatTreeStyles_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  renderFlatTree_unstable,
+  /** @deprecated Tree is currently stable. Import from @fluentui/react-components instead */
+  flattenTree_unstable,
+} from '@fluentui/react-tree';
 
-export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
-
-export {
-  TableCell,
-  tableCellClassNames,
-  tableCellClassName,
-  useTableCellStyles_unstable,
-  useTableCell_unstable,
-  renderTableCell_unstable,
-  TableRow,
-  tableRowClassNames,
-  tableRowClassName,
-  useTableRowStyles_unstable,
-  useTableRow_unstable,
-  renderTableRow_unstable,
-  TableBody,
-  tableBodyClassName,
-  tableBodyClassNames,
-  useTableBodyStyles_unstable,
-  useTableBody_unstable,
-  renderTableBody_unstable,
-  Table,
-  tableClassName,
-  tableClassNames,
-  useTableStyles_unstable,
-  useTable_unstable,
-  renderTable_unstable,
-  TableHeader,
-  tableHeaderClassNames,
-  tableHeaderClassName,
-  useTableHeaderStyles_unstable,
-  useTableHeader_unstable,
-  renderTableHeader_unstable,
-  TableHeaderCell,
-  tableHeaderCellClassName,
-  tableHeaderCellClassNames,
-  useTableHeaderCellStyles_unstable,
-  useTableHeaderCell_unstable,
-  renderTableHeaderCell_unstable,
-  TableContextProvider,
-  useTableContext,
-  TableSelectionCell,
-  useTableSelectionCellStyles_unstable,
-  useTableSelectionCell_unstable,
-  renderTableSelectionCell_unstable,
-  tableSelectionCellClassNames,
-  TableCellActions,
-  useTableCellActionsStyles_unstable,
-  useTableCellActions_unstable,
-  renderTableCellActions_unstable,
-  tableCellActionsClassNames,
-  TableCellLayout,
-  useTableCellLayout_unstable,
-  useTableCellLayoutStyles_unstable,
-  renderTableCellLayout_unstable,
-  tableCellLayoutClassNames,
-} from '@fluentui/react-table';
 export type {
-  SortDirection,
-  TableHeaderCellProps,
-  TableHeaderCellSlots,
-  TableHeaderCellState,
-  TableHeaderProps,
-  TableHeaderSlots,
-  TableHeaderState,
-  TableProps,
-  TableSlots,
-  TableState,
-  TableContextValue,
-  TableContextValues,
-  TableBodyProps,
-  TableBodyState,
-  TableBodySlots,
-  TableRowProps,
-  TableRowState,
-  TableRowSlots,
-  TableCellProps,
-  TableCellState,
-  TableCellSlots,
-  TableSelectionCellProps,
-  TableSelectionCellState,
-  TableSelectionCellSlots,
-  TableCellActionsProps,
-  TableCellActionsState,
-  TableCellActionsSlots,
-} from '@fluentui/react-table';
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeState,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeSlots,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeProps,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeOpenChangeEvent,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeOpenChangeData,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeNavigationEvent_unstable,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeNavigationData_unstable,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemState,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemSlots,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemProps,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemPersonaLayoutState,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemPersonaLayoutSlots,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemPersonaLayoutProps,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemLayoutState,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemLayoutSlots,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeItemLayoutProps,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  TreeContextValue,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  FlatTreeProps,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  FlatTreeSlots,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  FlatTreeState,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  HeadlessFlatTree,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  HeadlessFlatTreeItem,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  HeadlessFlatTreeItemProps,
+  /** @deprecated Tree is stable. Import from @fluentui/react-components instead */
+  HeadlessFlatTreeOptions,
+} from '@fluentui/react-tree';
 
 export {
-  CheckboxField,
-  checkboxFieldClassNames,
-  ComboboxField,
-  comboboxFieldClassNames,
-  getFieldClassNames,
-  InputField,
-  inputFieldClassNames,
-  RadioGroupField,
-  radioGroupFieldClassNames,
-  renderField_unstable,
-  SelectField,
-  selectFieldClassNames,
-  SliderField,
-  sliderFieldClassNames,
-  SpinButtonField,
-  spinButtonFieldClassNames,
-  SwitchField,
-  switchFieldClassNames,
-  TextareaField,
-  textareaFieldClassNames,
-  useFieldStyles_unstable,
-  useField_unstable,
-} from '@fluentui/react-field';
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  Drawer,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  renderDrawer_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawer_unstable,
+  /** @deprecated Use `OverlayDrawer` from @fluentui/react-components instead */
+  OverlayDrawer as DrawerOverlay,
+  /** @deprecated Use `OverlayDrawerClassNames` from @fluentui/react-components instead */
+  overlayDrawerClassNames as DrawerOverlayClassNames,
+  /** @deprecated Use `renderOverlayDrawer_unstable` from @fluentui/react-components instead */
+  renderOverlayDrawer_unstable as renderDrawerOverlay_unstable,
+  /** @deprecated Use `useOverlayDrawerStyles_unstable` from @fluentui/react-components instead */
+  useOverlayDrawerStyles_unstable as useDrawerOverlayStyles_unstable,
+  /** @deprecated Use `useOverlayDrawer_unstable` from @fluentui/react-components instead */
+  useOverlayDrawer_unstable as useDrawerOverlay_unstable,
+  /** @deprecated Use `InlineDrawer` from @fluentui/react-components instead */
+  InlineDrawer as DrawerInline,
+  /** @deprecated Use `InlineDrawerClassNames` from @fluentui/react-components instead */
+  inlineDrawerClassNames as DrawerInlineClassNames,
+  /** @deprecated Use `renderInlineDrawer_unstable` from @fluentui/react-components instead */
+  renderInlineDrawer_unstable as renderDrawerInline_unstable,
+  /** @deprecated Use `useInlineDrawerStyles_unstable` from @fluentui/react-components instead */
+  useInlineDrawerStyles_unstable as useDrawerInlineStyles_unstable,
+  /** @deprecated Use `useInlineDrawer_unstable` from @fluentui/react-components instead */
+  useInlineDrawer_unstable as useDrawerInline_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  OverlayDrawer,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  overlayDrawerClassNames,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  renderOverlayDrawer_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useOverlayDrawerStyles_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useOverlayDrawer_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  InlineDrawer,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  inlineDrawerClassNames,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  renderInlineDrawer_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useInlineDrawerStyles_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useInlineDrawer_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerBody,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  drawerBodyClassNames,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  renderDrawerBody_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerBodyStyles_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerBody_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeader,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  drawerHeaderClassNames,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  renderDrawerHeader_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerHeaderStyles_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerHeader_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderTitle,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  drawerHeaderTitleClassNames,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  renderDrawerHeaderTitle_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerHeaderTitleStyles_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerHeaderTitle_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderNavigation,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  drawerHeaderNavigationClassNames,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  renderDrawerHeaderNavigation_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerHeaderNavigationStyles_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerHeaderNavigation_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerFooter,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  drawerFooterClassNames,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  renderDrawerFooter_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerFooterStyles_unstable,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  useDrawerFooter_unstable,
+} from '@fluentui/react-drawer';
+
 export type {
-  CheckboxFieldProps,
-  ComboboxFieldProps,
-  FieldConfig,
-  FieldProps,
-  FieldSlots,
-  FieldState,
-  InputFieldProps,
-  RadioGroupFieldProps,
-  SelectFieldProps,
-  SliderFieldProps,
-  SpinButtonFieldProps,
-  SwitchFieldProps,
-  TextareaFieldProps,
-} from '@fluentui/react-field';
-
-export {
-  Persona,
-  personaClassNames,
-  renderPersona_unstable,
-  usePersonaStyles_unstable,
-  usePersona_unstable,
-} from '@fluentui/react-persona';
-export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
-
-export {
-  Progress,
-  progressClassNames,
-  renderProgress_unstable,
-  useProgressStyles_unstable,
-  useProgress_unstable,
-} from '@fluentui/react-progress';
-export type { ProgressProps, ProgressState, ProgressSlots } from '@fluentui/react-progress';
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerProps,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerSlots,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerState,
+  /** @deprecated Use `OverlayDrawerProps` from @fluentui/react-components instead */
+  OverlayDrawerProps as DrawerOverlayProps,
+  /** @deprecated Use `OverlayDrawerSlots` from @fluentui/react-components instead */
+  OverlayDrawerSlots as DrawerOverlaySlots,
+  /** @deprecated Use `OverlayDrawerState` from @fluentui/react-components instead */
+  OverlayDrawerState as DrawerOverlayState,
+  /** @deprecated Use `InlineDrawerProps` from @fluentui/react-components instead */
+  InlineDrawerProps as DrawerInlineProps,
+  /** @deprecated Use `InlineDrawerSlots` from @fluentui/react-components instead */
+  InlineDrawerSlots as DrawerInlineSlots,
+  /** @deprecated Use `InlineDrawerState` from @fluentui/react-components instead */
+  InlineDrawerState as DrawerInlineState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  OverlayDrawerProps,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  OverlayDrawerSlots,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  OverlayDrawerState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  InlineDrawerProps,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  InlineDrawerSlots,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  InlineDrawerState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerBodySlots,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerBodyState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderSlots,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderTitleSlots,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderTitleState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerFooterSlots,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerFooterState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderNavigationProps,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderNavigationSlots,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  DrawerHeaderNavigationState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+} from '@fluentui/react-drawer';

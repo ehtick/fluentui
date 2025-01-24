@@ -117,7 +117,7 @@ export const ScrollbarVisibility = {
 /**
  * {@docCategory ScrollablePane}
  */
-export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];
+export type ScrollbarVisibility = (typeof ScrollbarVisibility)[keyof typeof ScrollbarVisibility];
 
 export interface IScrollablePaneContext {
   scrollablePane?: {
@@ -130,6 +130,10 @@ export interface IScrollablePaneContext {
     notifySubscribers: (sort?: boolean) => void;
     syncScrollSticky: (sticky: Sticky) => void;
   };
+  window: Window | undefined;
 }
 
-export const ScrollablePaneContext = React.createContext<IScrollablePaneContext>({ scrollablePane: undefined });
+export const ScrollablePaneContext = React.createContext<IScrollablePaneContext>({
+  scrollablePane: undefined,
+  window: undefined,
+});

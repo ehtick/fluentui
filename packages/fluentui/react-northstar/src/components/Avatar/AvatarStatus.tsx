@@ -45,7 +45,7 @@ export const avatarStatusClassName = statusClassName;
 /**
  * A AvatarStatus provides a status for the Avatar.
  */
-export const AvatarStatus = (React.forwardRef<HTMLSpanElement, AvatarStatusProps>((props, ref) => {
+export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarStatus.displayName, context.telemetry);
   setStart();
@@ -73,16 +73,12 @@ export const AvatarStatus = (React.forwardRef<HTMLSpanElement, AvatarStatusProps
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AvatarStatus.handledProps, props);
 
-  const iconElement = createShorthand(
-    AvatarStatusIcon,
-    icon as ShorthandValue<AvatarStatusIconProps & { as: 'span' }>,
-    {
-      defaultProps: () => ({
-        size,
-        state,
-      }),
-    },
-  );
+  const iconElement = createShorthand<React.FC<AvatarStatusIconProps>>(AvatarStatusIcon, icon, {
+    defaultProps: () => ({
+      size,
+      state,
+    }),
+  });
 
   const imageElement = createShorthand(AvatarStatusImage, image, {
     defaultProps: () =>
@@ -99,7 +95,7 @@ export const AvatarStatus = (React.forwardRef<HTMLSpanElement, AvatarStatusProps
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusProps> & FluentComponentStaticProps;
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusProps> & FluentComponentStaticProps;
 
 AvatarStatus.displayName = 'AvatarStatus';
 AvatarStatus.propTypes = {

@@ -1,94 +1,141 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
-import { storiesOf } from '@storybook/react';
+import type { Meta } from '@storybook/react';
+import { Steps } from 'storywright';
 import { Persona } from '@fluentui/react-persona';
-import { AvatarSizes } from '@fluentui/react-avatar';
-import { BadgeProps } from '@fluentui/react-badge/src/Badge';
+import type { PersonaProps } from '@fluentui/react-persona';
+import { getStoryVariant, withStoryWrightSteps, RTL, HIGH_CONTRAST, DARK_MODE } from '../utilities';
 
-const avatarSizes: AvatarSizes[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
-const badgeSizes: BadgeProps['size'][] = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'];
+const sizes: PersonaProps['size'][] = ['extra-small', 'small', 'medium', 'large', 'extra-large', 'huge'];
+const textPositions: PersonaProps['textPosition'][] = ['before', 'below', 'after'];
+const textAlignments: PersonaProps['textAlignment'][] = ['start', 'center'];
 
-storiesOf('Persona Converged', module)
-  .addDecorator(story => (
-    <div className="testWrapper" style={{ maxWidth: '750px' }}>
-      {story()}
-    </div>
-  ))
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
-  .addStory(
-    'basic',
-    () => (
-      <div
-        className="testWrapper"
-        style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
-      >
-        <Persona name="Kevin Sturgis" secondaryText="Available" />
-        <Persona name="Kevin Sturgis" secondaryText="Available" presence={{ status: 'available' }} />
-        <Persona presenceOnly name="Kevin Sturgis" secondaryText="Available" presence={{ status: 'available' }} />
+export default {
+  title: 'Persona Converged',
+
+  decorators: [
+    story => (
+      <div className="testWrapper" style={{ maxWidth: '750px' }}>
+        {story()}
       </div>
     ),
-    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory('single-double-lines', () => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
-    >
-      <Persona name="Kevin Sturgis" />
-      <Persona presence={{ status: 'available' }} name="Kevin Sturgis" />
-      <Persona presenceOnly presence={{ status: 'available' }} name="Kevin Sturgis" />
-      <Persona name="Kevin Sturgis" secondaryText="Available" />
-      <Persona presence={{ status: 'available' }} name="Kevin Sturgis" secondaryText="Available" />
-      <Persona presenceOnly presence={{ status: 'available' }} name="Kevin Sturgis" secondaryText="Available" />
-    </div>
-  ))
-  .addStory('size-avatar', () => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
-    >
-      {avatarSizes.map(size => (
-        <Persona avatar={{ size }} name="Kevin Sturgis" secondaryText="Software Engineer" key={size} />
-      ))}
-    </div>
-  ))
-  .addStory('size-presence', () => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
-    >
-      {badgeSizes.map(size => (
+    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end() }),
+  ],
+} satisfies Meta<typeof Persona>;
+
+export const Basic = () => (
+  <div
+    className="testWrapper"
+    style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
+  >
+    <Persona name="Kevin Sturgis" secondaryText="Available" />
+    <Persona name="Kevin Sturgis" secondaryText="Available" presence={{ status: 'available' }} />
+    <Persona presenceOnly name="Kevin Sturgis" secondaryText="Available" presence={{ status: 'available' }} />
+  </div>
+);
+Basic.storyName = 'basic';
+
+export const BasicRTL = getStoryVariant(Basic, RTL);
+
+export const BasicHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
+
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
+
+export const SizeAvatar = () => (
+  <div
+    className="testWrapper"
+    style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
+  >
+    {sizes.map(size => (
+      <Persona
+        size={size}
+        name="Kevin Sturgis"
+        secondaryText="Software Engineer"
+        tertiaryText="Available"
+        quaternaryText="Microsoft"
+        key={size}
+      />
+    ))}
+  </div>
+);
+SizeAvatar.storyName = 'size-avatar';
+
+export const SizePresence = () => (
+  <div
+    className="testWrapper"
+    style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
+  >
+    {sizes.map(size => (
+      <Persona
+        size={size}
+        presenceOnly
+        presence={{ status: 'available' }}
+        name="Kevin Sturgis"
+        secondaryText="Software Engineer"
+        tertiaryText="Available"
+        quaternaryText="Microsoft"
+        key={size}
+      />
+    ))}
+  </div>
+);
+SizePresence.storyName = 'size-presence';
+
+export const TextPosition = () => (
+  <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
+    {textPositions.map(textPosition => (
+      <Persona
+        textPosition={textPosition}
+        presenceOnly
+        presence={{ status: 'available' }}
+        name="Kevin Sturgis"
+        secondaryText="Software Engineer"
+        tertiaryText="Available"
+        quaternaryText="Microsoft"
+        key={textPosition}
+      />
+    ))}
+  </div>
+);
+TextPosition.storyName = 'textPosition';
+
+export const TextAlignment = () => (
+  <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
+    {textAlignments.map(textAlignment => (
+      <div key={textAlignment} style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
         <Persona
+          textAlignment={textAlignment}
           presenceOnly
-          presence={{ size, status: 'available' }}
+          presence={{ status: 'available' }}
           name="Kevin Sturgis"
-          secondaryText="Available"
-          key={size}
+          secondaryText="Software Engineer"
+          tertiaryText="Available"
+          quaternaryText="Microsoft"
+          key={'presence-' + textAlignment}
         />
-      ))}
-    </div>
-  ))
-  .addStory('scaling', () => (
-    <div
-      className="testWrapper"
-      style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: '10px', maxWidth: '750px' }}
-    >
-      <Persona name="Kevin Sturgis" presence={{ status: 'away' }} />
-      <Persona name="Kevin Sturgis" presence={{ status: 'away' }} secondaryText="Away" />
-      <Persona
-        name="Kevin Sturgis"
-        presence={{ status: 'away' }}
-        secondaryText="Away"
-        tertiaryText="Software Engineer"
-      />
-      <Persona
-        name="Kevin Sturgis"
-        presence={{ status: 'away' }}
-        secondaryText="Away"
-        tertiaryText="Software Engineer"
-        quaternaryText="Last available 4:00 pm"
-      />
-    </div>
-  ));
+        {/* This test is to verify that when the Avatar takes more space
+          than the text lines, the text lines are centered */}
+        <Persona
+          textAlignment={textAlignment}
+          size="huge"
+          name="Kevin Sturgis"
+          secondaryText="Software Engineer"
+          key={'avatar-' + textAlignment}
+        />
+      </div>
+    ))}
+  </div>
+);
+TextAlignment.storyName = 'textAlignment';
+
+export const TextWrap = () => (
+  <div className="testWrapper" style={{ padding: '10px', width: '200px' }}>
+    <Persona
+      presence={{ status: 'available' }}
+      name="Do in incididunt ea minim laboris et est do consequat."
+      secondaryText="Ea cupidatat esse ullamco velit officia sint ea sit duis id ea id eu."
+      tertiaryText="Eiusmod mollit labore cupidatat enim amet dolor dolor."
+      quaternaryText="Commodo est aute sunt eiusmod sint elit irure incididunt reprehenderit culpa."
+    />
+  </div>
+);
+TextWrap.storyName = 'textWrap';
