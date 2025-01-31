@@ -145,6 +145,7 @@ exports[`ComboBox Renders correctly 1`] = `
       <input
         aria-autocomplete="both"
         aria-expanded="false"
+        aria-invalid="false"
         autocapitalize="off"
         autocomplete="off"
         class=
@@ -202,7 +203,6 @@ exports[`ComboBox Renders correctly 1`] = `
         value="testValue"
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -210,22 +210,20 @@ exports[`ComboBox Renders correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -253,6 +251,24 @@ exports[`ComboBox Renders correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -295,7 +311,6 @@ exports[`ComboBox Renders correctly 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable="false"
-        role="presentation"
         tabindex="-1"
         type="button"
       >
@@ -318,6 +333,7 @@ exports[`ComboBox Renders correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -480,6 +496,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
         aria-autocomplete="both"
         aria-controls="ComboBox0-list"
         aria-expanded="true"
+        aria-invalid="false"
         autocapitalize="off"
         autocomplete="off"
         class=
@@ -537,7 +554,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
         value="Option 2"
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -546,22 +562,20 @@ exports[`ComboBox Renders correctly when open 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: #edebe9;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #201f1e;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -595,6 +609,24 @@ exports[`ComboBox Renders correctly when open 1`] = `
               right: -2px;
               top: -2px;
             }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:active > span {
               left: 0px;
               position: relative;
@@ -619,7 +651,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable="false"
-        role="presentation"
         tabindex="-1"
         type="button"
       >
@@ -642,6 +673,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -816,6 +848,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
+                            align-items: center;
                             background-color: transparent;
                             border-color: transparent;
                             border-radius: 0px;
@@ -830,11 +863,8 @@ exports[`ComboBox Renders correctly when open 1`] = `
                             font-size: 14px;
                             font-weight: 400;
                             height: auto;
+                            justify-content: center;
                             line-height: 20px;
-                            margin-bottom: 0px;
-                            margin-left: 0px;
-                            margin-right: 0px;
-                            margin-top: 0px;
                             min-height: 36px;
                             outline: transparent;
                             overflow-wrap: break-word;
@@ -864,6 +894,24 @@ exports[`ComboBox Renders correctly when open 1`] = `
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            bottom: -2px;
+                            left: -2px;
+                            outline-color: ButtonText;
+                            right: -2px;
+                            top: -2px;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 2px;
+                            content: "";
+                            left: 2px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 2px;
+                            top: 2px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             bottom: -2px;
                             left: -2px;
                             outline-color: ButtonText;
@@ -961,7 +1009,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <button
@@ -975,6 +1023,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
+                          align-items: center;
                           background-color: transparent;
                           border-color: transparent;
                           border-radius: 0px;
@@ -989,11 +1038,8 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           height: auto;
+                          justify-content: center;
                           line-height: 20px;
-                          margin-bottom: 0px;
-                          margin-left: 0px;
-                          margin-right: 0px;
-                          margin-top: 0px;
                           min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -1023,6 +1069,24 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 2px;
+                          content: "";
+                          left: 2px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 2px;
+                          top: 2px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           bottom: -2px;
                           left: -2px;
                           outline-color: ButtonText;
@@ -1063,6 +1127,17 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           forced-color-adjust: none;
                         }
                         .ms-Fabric--isFocusVisible &:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:after {
                           border: 1px solid #ffffff;
                           bottom: 0px;
                           content: "";
@@ -1260,6 +1335,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
         aria-autocomplete="both"
         aria-controls="ComboBox0-list"
         aria-expanded="true"
+        aria-invalid="false"
         autocapitalize="off"
         autocomplete="off"
         class=
@@ -1318,7 +1394,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
         value=""
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -1327,22 +1402,20 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: #edebe9;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #201f1e;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1376,6 +1449,24 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               right: -2px;
               top: -2px;
             }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:active > span {
               left: 0px;
               position: relative;
@@ -1400,7 +1491,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable="false"
-        role="presentation"
         tabindex="-1"
         type="button"
       >
@@ -1423,6 +1513,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1664,6 +1755,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           }
                     >
                       <input
+                        aria-labelledby="ComboBox0-list1-label"
                         aria-selected="false"
                         class=
 
@@ -1677,6 +1769,13 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                               outline: 1px solid #605e5c;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                              outline: 1px solid WindowText;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus + label::before {
+                              outline-offset: 2px;
+                              outline: 1px solid #605e5c;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus + label::before {
                               outline: 1px solid WindowText;
                             }
                         data-index="1"
@@ -1753,6 +1852,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                   font-weight: normal;
                                   opacity: 0;
                                   speak: none;
+                                  text-decoration: inherit;
                                 }
                                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                   -ms-high-contrast-adjust: none;
@@ -1765,6 +1865,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           </i>
                         </div>
                         <span
+                          aria-hidden="true"
                           class=
                               ms-ComboBox-optionText
                               {
@@ -1777,6 +1878,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                 white-space: nowrap;
                                 word-wrap: break-word;
                               }
+                          id="ComboBox0-list1-label"
                         >
                           Option 1
                         </span>
@@ -1789,7 +1891,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <div
@@ -1877,6 +1979,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         }
                   >
                     <input
+                      aria-labelledby="ComboBox0-list3-label"
                       aria-selected="true"
                       checked=""
                       class=
@@ -1891,6 +1994,13 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             outline: 1px solid #605e5c;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                            outline: 1px solid WindowText;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus + label::before {
+                            outline-offset: 2px;
+                            outline: 1px solid #605e5c;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus + label::before {
                             outline: 1px solid WindowText;
                           }
                       data-index="3"
@@ -1970,6 +2080,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                 font-weight: normal;
                                 opacity: 1;
                                 speak: none;
+                                text-decoration: inherit;
                               }
                               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                 -ms-high-contrast-adjust: none;
@@ -1982,6 +2093,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         </i>
                       </div>
                       <span
+                        aria-hidden="true"
                         class=
                             ms-ComboBox-optionText
                             {
@@ -1994,6 +2106,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                               white-space: nowrap;
                               word-wrap: break-word;
                             }
+                        id="ComboBox0-list3-label"
                       >
                         Option 2
                       </span>
@@ -2156,6 +2269,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         aria-autocomplete="both"
         aria-describedby="test-foo ktp-layer-id ktp-a"
         aria-expanded="false"
+        aria-invalid="false"
         autocapitalize="off"
         autocomplete="off"
         class=
@@ -2213,7 +2327,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         value=""
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -2221,22 +2334,20 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
               cursor: default;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
               height: 100%;
+              justify-content: center;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -2264,6 +2375,24 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -2306,7 +2435,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable="false"
-        role="presentation"
         tabindex="-1"
         type="button"
       >
@@ -2329,6 +2457,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;

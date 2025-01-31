@@ -13,13 +13,15 @@ module.exports = {
      * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
      */
     ...getNamingConventionRule(),
+    '@fluentui/max-len': 'off',
+    // @typescript-eslint rules
+    '@typescript-eslint/triple-slash-reference': ['error', { lib: 'always', path: 'never', types: 'never' }],
   },
   overrides: [
     {
-      files: '**/src/index.{ts,tsx,js}',
+      files: '**/src/**/*.{ts,tsx,js}',
       rules: {
-        // TODO: propagate to `error` once all packages barrel files have been fixed
-        '@rnx-kit/no-export-all': ['warn', { expand: 'all' }],
+        '@rnx-kit/no-export-all': ['error', { expand: 'all' }],
       },
     },
   ],

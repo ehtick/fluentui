@@ -39,7 +39,7 @@ export const FabricBase: React.FunctionComponent<IFabricProps> = React.forwardRe
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      applyTheme: applyTheme,
+      applyTheme,
       className,
     });
 
@@ -72,7 +72,7 @@ function useRenderedContent(
   if (needsTheme) {
     // Disabling ThemeProvider here because theme doesn't need to be re-provided by ThemeProvider if dir has changed.
     renderedContent = (
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
     );
   }
