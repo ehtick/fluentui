@@ -1,36 +1,32 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
+import { css } from '@microsoft/fast-element';
 import {
-  display,
-  ElementDefinitionContext,
-  FoundationElementDefinition,
-  ListboxOption
-} from '@microsoft/fast-foundation';
-import {
-  controlCornerRadius,
-  designUnit,
-  neutralStrokeRest,
-  strokeWidth,
-} from '../design-tokens';
-import { focusTreatmentBase } from '../styles/focus';
+  borderRadiusMedium,
+  colorNeutralBackground1,
+  shadow16,
+  spacingHorizontalXS,
+  spacingHorizontalXXS,
+} from '../theme/design-tokens.js';
+import { display } from '../utils/display.js';
 
-export const listboxStyles: (
-  context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-  css`
-    ${display('inline-flex')} :host {
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-      border-radius: calc(${controlCornerRadius} * 1px);
-      box-sizing: border-box;
-      flex-direction: column;
-      padding: calc(${designUnit} * 1px) 0;
-    }
+/**
+ * Styles for the {@link (Listbox:class)} component.
+ *
+ * @public
+ */
+export const styles = css`
+  ${display('inline-flex')}
 
-    ::slotted(${context.tagFor(ListboxOption)}) {
-      margin: 0 calc(${designUnit} * 1px);
-    }
-
-    :host(:focus-within:not([disabled])) {
-      ${focusTreatmentBase}
-    }
-  `
+  :host {
+    background-color: ${colorNeutralBackground1};
+    border-radius: ${borderRadiusMedium};
+    border: none;
+    box-shadow: ${shadow16};
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0;
+    min-width: 160px;
+    padding: ${spacingHorizontalXS};
+    row-gap: ${spacingHorizontalXXS};
+    width: auto;
+  }
+`;

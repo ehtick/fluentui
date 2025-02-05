@@ -72,6 +72,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
     borderColor = theme.palette.white,
     outlineColor = theme.palette.neutralSecondary,
     isFocusedOnly = true,
+    pointerEvents,
   } = options;
 
   return {
@@ -89,9 +90,12 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
 
       // When the element that uses this mixin is in a :focus state, add a pseudo-element to
       // create a border.
-      [`.${IsFocusVisibleClassName} &${isFocusedOnly ? ':focus' : ''}:after`]: {
+      [`.${IsFocusVisibleClassName} &${isFocusedOnly ? ':focus' : ''}:after, :host(.${IsFocusVisibleClassName}) &${
+        isFocusedOnly ? ':focus' : ''
+      }:after`]: {
         content: '""',
         position: 'absolute',
+        pointerEvents,
         left: inset + 1,
         top: inset + 1,
         bottom: inset + 1,
@@ -99,7 +103,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
         border: `${width}px solid ${borderColor}`,
         outline: `${width}px solid ${outlineColor}`,
         zIndex: ZIndexes.FocusStyle,
-        borderRadius: borderRadius,
+        borderRadius,
         selectors: {
           [HighContrastSelector]: highContrastStyle,
         },

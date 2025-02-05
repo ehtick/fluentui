@@ -28,8 +28,6 @@ function mockData(count: number = 0): IMockItem[] {
 
 describe('List', () => {
   it('renders List correctly', () => {
-    List.prototype.componentDidMount = jest.fn();
-
     const onRenderCell = () => null;
     const component = renderer.create(<List items={[]} onRenderCell={onRenderCell} />);
     const tree = component.toJSON();
@@ -134,6 +132,14 @@ describe('List', () => {
       const rows = wrapper.find('.cell');
 
       expect(rows).toHaveLength(4);
+    });
+
+    it('renders List correctly when `renderEarly={true}`', () => {
+      const onRenderCell = () => null;
+      const component = renderer.create(<List items={[]} onRenderCell={onRenderCell} renderEarly={true} />);
+      const tree = component.toJSON();
+
+      expect(tree).toMatchSnapshot();
     });
   });
 

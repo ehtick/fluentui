@@ -34,6 +34,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                 padding-top: 0;
               }
           data-focuszone-id="FocusZone0"
+          data-tabster="{\\"uncontrolled\\": {}}"
           role="menubar"
         >
           <div
@@ -66,21 +67,19 @@ exports[`CommandBar renders commands correctly 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      align-items: center;
                       background-color: #ffffff;
                       border-radius: 0px;
                       border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
-                      display: inline-block;
+                      display: inline-flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                      justify-content: center;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -107,6 +106,25 @@ exports[`CommandBar renders commands correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 3px;
+                      content: "";
+                      left: 3px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 3px;
+                      top: 3px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: none;
                       bottom: 4px;
                       left: 4px;
@@ -208,21 +226,19 @@ exports[`CommandBar renders commands correctly 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      align-items: center;
                       background-color: #ffffff;
                       border-radius: 0px;
                       border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
-                      display: inline-block;
+                      display: inline-flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                      justify-content: center;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -249,6 +265,25 @@ exports[`CommandBar renders commands correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 3px;
+                      content: "";
+                      left: 3px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 3px;
+                      top: 3px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: none;
                       bottom: 4px;
                       left: 4px;
@@ -373,6 +408,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                 padding-top: 0;
               }
           data-focuszone-id="FocusZone0"
+          data-tabster="{\\"uncontrolled\\": {}}"
           role="menubar"
         >
           <div
@@ -405,21 +441,19 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      align-items: center;
                       background-color: #ffffff;
                       border-radius: 0px;
                       border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
-                      display: inline-block;
+                      display: inline-flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                      justify-content: center;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -446,6 +480,25 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 3px;
+                      content: "";
+                      left: 3px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 3px;
+                      top: 3px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: none;
                       bottom: 4px;
                       left: 4px;
@@ -547,21 +600,19 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      align-items: center;
                       background-color: #ffffff;
                       border-radius: 0px;
                       border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
-                      display: inline-block;
+                      display: inline-flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
+                      justify-content: center;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -588,6 +639,25 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 3px;
+                      content: "";
+                      left: 3px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 3px;
+                      top: 3px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: none;
                       bottom: 4px;
                       left: 4px;

@@ -50,12 +50,14 @@ import type { IWithResponsiveModeState } from '../../ResponsiveMode';
 import type { ISelectableDroppableTextProps } from '../../SelectableOption';
 import type { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { IFocusTrapZoneProps } from '../FocusTrapZone/FocusTrapZone.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
 const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
     rootRef: React.RefObject<HTMLDivElement>;
@@ -144,7 +146,7 @@ function useSelectedItemsState({
         if (searchKey != null) {
           return option.key === searchKey;
         } else {
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           return !!option.selected || !!option.isSelected;
         }
       });
@@ -186,6 +188,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   public static defaultProps = {
     options: [] as IDropdownOption[],
   };
+
+  public static contextType = WindowContext;
 
   private _host = React.createRef<HTMLDivElement>();
   private _focusZone = React.createRef<FocusZone>();
@@ -320,7 +324,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       hoisted: { selectedIndices },
     } = props;
     const { isOpen, calloutRenderEdge, hasFocus } = this.state;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._getPlaceholder;
 
     // If our cached options are out of date update our cache
@@ -346,7 +350,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       isRenderingPlaceholder: !selectedOptions.length,
       panelClassName: panelProps ? panelProps.className : undefined,
       calloutClassName: calloutProps ? calloutProps.className : undefined,
-      calloutRenderEdge: calloutRenderEdge,
+      calloutRenderEdge,
     });
 
     const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
@@ -372,6 +376,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
           aria-required={required}
           aria-disabled={disabled}
+          aria-invalid={hasErrorMessage}
           aria-controls={isOpen ? this._listId : undefined}
           {...divProps}
           className={this._classNames.dropdown}
@@ -387,7 +392,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             className={this._classNames.title}
             aria-live={hasFocus ? 'polite' : undefined}
             aria-atomic={hasFocus ? true : undefined}
-            aria-invalid={hasErrorMessage}
           >
             {
               // If option is selected render title, otherwise render the placeholder text
@@ -488,7 +492,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     checked?: boolean,
     multiSelect?: boolean,
   ) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onChange, onChanged } = this.props;
     if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
@@ -502,7 +506,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private _getPlaceholder = (): string | undefined => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return this.props.placeholder || this.props.placeHolder;
   };
 
@@ -756,7 +760,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const { index, key } = item;
     const separatorClassName = item.hidden ? this._classNames.dropdownDividerHidden : this._classNames.dropdownDivider;
     if (index! > 0) {
-      return <div role="separator" key={key} className={separatorClassName} />;
+      return <div role="presentation" key={key} className={separatorClassName} />;
     }
     return null;
   }
@@ -796,6 +800,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     const { title } = item;
 
+    // define the id and label id (for multiselect checkboxes)
+    const id = this._listId + item.index;
+    const labelId = item.id ?? id + '-label';
+
     const multiSelectItemStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<
           ICheckboxStyleProps,
@@ -805,7 +813,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     return !this.props.multiSelect ? (
       <CommandButton
-        id={this._listId + item.index}
+        id={id}
         key={item.key}
         data-index={item.index}
         data-is-focusable={!item.disabled}
@@ -829,7 +837,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       </CommandButton>
     ) : (
       <Checkbox
-        id={this._listId + item.index}
+        id={id}
         key={item.key}
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
@@ -847,13 +855,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         label={item.text}
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
-        onRenderLabel={this._onRenderItemLabel.bind(this, item)}
+        onRenderLabel={this._onRenderItemLabel.bind(this, { ...item, id: labelId })}
         className={css(itemClassName, 'is-multi-select')}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={!item.hidden ? this._sizePosCache.positionInSet(item.index) : undefined}
         ariaSetSize={!item.hidden ? this._sizePosCache.optionSetSize : undefined}
         ariaLabel={item.ariaLabel}
+        ariaLabelledBy={item.ariaLabel ? undefined : labelId}
       />
     );
   };
@@ -863,10 +872,22 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
   };
 
-  /** Render custom label for drop down item */
+  /*
+   * Render content of a multiselect item label.
+   * Text within the label is aria-hidden, to prevent duplicate input/label exposure
+   */
+  private _onRenderMultiselectOption = (item: IDropdownOption): JSX.Element => {
+    return (
+      <span id={item.id} aria-hidden="true" className={this._classNames.dropdownOptionText}>
+        {item.text}
+      </span>
+    );
+  };
+
+  /** Render custom label for multiselect checkbox items */
   private _onRenderItemLabel = (item: IDropdownOption): JSX.Element | null => {
-    const { onRenderOption = this._onRenderOption } = this.props;
-    return onRenderOption(item, this._onRenderOption);
+    const { onRenderOption = this._onRenderMultiselectOption } = this.props;
+    return onRenderOption(item, this._onRenderMultiselectOption);
   };
 
   private _onPositioned = (positions?: ICalloutPositionedInfo): void => {
@@ -920,14 +941,15 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * for updating focus are not interacting during scroll
    */
   private _onScroll = (): void => {
+    const win = getWindowEx(this.context)!; // can only be called on the client
     if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
-      clearTimeout(this._scrollIdleTimeoutId);
+      win.clearTimeout(this._scrollIdleTimeoutId);
       this._scrollIdleTimeoutId = undefined;
     } else {
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = window.setTimeout(() => {
+    this._scrollIdleTimeoutId = win.setTimeout(() => {
       this._isScrollIdle = true;
     }, this._scrollIdleDelay);
   };
@@ -942,10 +964,11 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
+    const doc = getDocumentEx(this.context)!; // can only be called on the client
     const targetElement = ev.currentTarget as HTMLElement;
     this._gotMouseMove = true;
 
-    if (!this._isScrollIdle || document.activeElement === targetElement) {
+    if (!this._isScrollIdle || doc.activeElement === targetElement) {
       return;
     }
 
@@ -1025,7 +1048,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
     const isOpen = this.state.isOpen;
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -1113,7 +1136,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         return;
       }
     }
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
@@ -1136,7 +1159,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
    */
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1164,7 +1187,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.up:
         if (containsExpandCollapseModifier) {
@@ -1275,7 +1298,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    */
   private _isDisabled: () => boolean | undefined = () => {
     let { disabled } = this.props;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { isDisabled } = this.props;
 
     // Remove this deprecation workaround at 1.0.0

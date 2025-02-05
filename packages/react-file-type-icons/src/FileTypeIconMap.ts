@@ -10,6 +10,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
+  album: {},
   audio: {
     extensions: [
       'aif',
@@ -43,6 +44,12 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   classifier: {
     extensions: ['classifier'],
+  },
+  clipchamp: {
+    extensions: ['clipchamp'],
+  },
+  cliptemplate: {
+    extensions: ['cliptemplate'],
   },
   code: {
     extensions: [
@@ -255,9 +262,15 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   contact: {
     extensions: ['vcf'],
   },
+  copilot: {
+    extensions: ['copilot'],
+  },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
+  },
+  designer: {
+    extensions: ['design'],
   },
   desktopfolder: {},
   docset: {},
@@ -282,7 +295,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   form: {},
   genericfile: {},
   html: {
-    extensions: ['htm', 'html', 'mht'],
+    extensions: ['htm', 'html', 'mht', 'mhtml'],
   },
   ipynb: {
     extensions: ['nnb', 'ipynb'],
@@ -291,14 +304,22 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
   linkedfolder: {},
+  listform: {},
   listitem: {},
   loop: {
-    extensions: ['fluid', 'loop'],
+    extensions: ['fluid', 'loop', 'note'],
   },
+  loopworkspace: {},
   officescript: {
     extensions: ['osts'],
   },
   splist: {},
+  mcworld: {
+    extensions: ['mcworld'],
+  },
+  mctemplate: {
+    extensions: ['mctemplate'],
+  },
   model: {
     extensions: [
       '3ds',
@@ -317,7 +338,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'layer',
       'layout',
       'max',
-      'mcworld',
       'mtl',
       'obj',
       'off',
@@ -338,10 +358,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   multiple: {},
   one: {
-    // This represents a single Fluid Note, or a partial exported section/page of a notebook.
-    extensions: ['note', 'one'],
+    // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
+    extensions: ['one', 'onepart'],
   },
   onetoc: {
+    // This is an entire OneNote notebook.
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
   },
   pbiapp: {},
@@ -393,6 +414,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   photo360: {},
   picturesfolder: {},
+  planner: {},
+  portfolio: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },
@@ -457,6 +480,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'xll',
     ],
   },
+  todoitem: {},
   txt: {
     extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'],
   },
@@ -538,7 +562,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vst', 'vstm', 'vstx', 'vsx'],
   },
   whiteboard: {
-    extensions: ['whiteboard'],
+    extensions: ['whiteboard', 'wbtx'],
   },
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],

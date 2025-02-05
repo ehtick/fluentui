@@ -125,7 +125,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Additional props to pass through to the SelectionZone created by default.
    */
-  selectionZoneProps?: ISelectionZoneProps;
+  selectionZoneProps?: Partial<ISelectionZoneProps>;
 
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;
@@ -480,6 +480,9 @@ export interface IColumn {
 
   /** Callback for when the user opens the column header context menu. */
   onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
+
+  /** Callback for when the user performs a keyboard action on the column header */
+  onColumnKeyDown?: (ev: React.KeyboardEvent, column: IColumn) => void;
 
   /**
    * Callback for when the column is resized (`width` is the current width).

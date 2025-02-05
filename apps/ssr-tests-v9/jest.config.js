@@ -6,14 +6,8 @@
 module.exports = {
   displayName: 'ssr-tests-v9',
   preset: '../../jest.preset.js',
-  globals: {
-    'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.spec.json',
-      diagnostics: false,
-    },
-  },
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': ['@swc/jest', {}],
   },
   testEnvironment: 'node',
   coverageDirectory: './coverage',

@@ -39,7 +39,6 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
           class=
               ms-PositioningContainer-layerHost
               {
-                border: 1px solid \${};
                 box-sizing: border-box;
                 outline: transparent;
                 position: absolute;
@@ -170,6 +169,7 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
                         {
                           background-color: red;
                           border-radius: 32px;
+                          cursor: pointer;
                           outline: none;
                           overflow: hidden;
                           position: relative;
@@ -187,7 +187,9 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
                     role="dialog"
                     tabindex="-1"
                   >
-                    <div>
+                    <div
+                      data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
+                    >
                       <div
                         aria-hidden="true"
                         data-is-focus-trap-zone-bumper="true"
@@ -272,7 +274,6 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
           class=
               ms-PositioningContainer-layerHost
               {
-                border: 1px solid \${};
                 box-sizing: border-box;
                 outline: transparent;
                 position: absolute;
@@ -403,6 +404,7 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
                         {
                           background-color: #0078d4;
                           border-radius: 32px;
+                          cursor: pointer;
                           outline: none;
                           overflow: hidden;
                           position: relative;
@@ -420,7 +422,9 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
                     role="dialog"
                     tabindex="-1"
                   >
-                    <div>
+                    <div
+                      data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
+                    >
                       <div
                         aria-hidden="true"
                         data-is-focus-trap-zone-bumper="true"
@@ -507,7 +511,6 @@ exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
           class=
               ms-PositioningContainer-layerHost
               {
-                border: 1px solid \${};
                 box-sizing: border-box;
                 outline: transparent;
                 position: absolute;
@@ -598,7 +601,9 @@ exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
                     role="dialog"
                     tabindex="-1"
                   >
-                    <div>
+                    <div
+                      data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
+                    >
                       <div
                         aria-hidden="true"
                         data-is-focus-trap-zone-bumper="true"

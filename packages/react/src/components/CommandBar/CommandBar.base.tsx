@@ -166,7 +166,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       return item.onRender(item, () => undefined);
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const itemText = item.text || item.name;
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
@@ -193,7 +193,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   private _commandButton = (item: ICommandBarItemProps, props: ICommandBarItemProps): JSX.Element => {
     const ButtonAs = this.props.buttonAs as IComponentAs<ICommandBarItemProps> | undefined;
     const CommandBarButtonAs = item.commandBarButtonAs as IComponentAs<ICommandBarItemProps> | undefined;
-    const DefaultButtonAs = (CommandBarButton as {}) as IComponentAs<ICommandBarItemProps>;
+    const DefaultButtonAs = CommandBarButton as {} as IComponentAs<ICommandBarItemProps>;
 
     // The prop types between these three possible implementations overlap enough that a force-cast is safe.
     let Type = DefaultButtonAs;
@@ -213,7 +213,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return ev => {
       // inactive is deprecated. remove check in 7.0
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (item.inactive) {
         return;
       }

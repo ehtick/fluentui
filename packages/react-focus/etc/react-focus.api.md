@@ -5,6 +5,7 @@
 ```ts
 
 import type { IRefObject } from '@fluentui/utilities';
+import { MergeStylesShadowRootContextValue } from '@fluentui/utilities';
 import type { Point } from '@fluentui/utilities';
 import * as React_2 from 'react';
 
@@ -19,6 +20,8 @@ export class FocusZone extends React_2.Component<IFocusZoneProps> implements IFo
     componentDidUpdate(): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    static contextType: React_2.Context<MergeStylesShadowRootContextValue | undefined>;
     // (undocumented)
     get defaultFocusElement(): HTMLElement | null;
     // (undocumented)
@@ -48,7 +51,7 @@ export const FocusZoneTabbableElements: {
 };
 
 // @public (undocumented)
-export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
+export type FocusZoneTabbableElements = (typeof FocusZoneTabbableElements)[keyof typeof FocusZoneTabbableElements];
 
 // @public
 export interface IFocusZone {

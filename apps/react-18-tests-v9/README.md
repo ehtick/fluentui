@@ -1,6 +1,6 @@
 # @fluentui/react-18-tests-v9
 
-**Tests for React 18 compatability in [Fluent UI React v9](https://react.fluentui.dev)**.
+**Tests for React 18 compatibility in [Fluent UI React v9](https://react.fluentui.dev)**.
 
 ## Usage
 
@@ -21,3 +21,21 @@ This file and process will be replaced with Storybook once we are able to get st
 ```
 
 Add test files for React 18 issues that have been triaged and resolved so that we do not regress.
+
+### `type-check`
+
+To be able to type-check cross React versions we need all v9 libraries build up front so we don't type check all v9 implementation rather public API surface.
+
+For that purpose we use `tsconfig.react-compat-check.json` as target for `type-check` npm script task, which disables path aliases and forces `tsc` to consume linked monorepo build packages.
+
+**Local machine flow:**
+
+```sh
+yarn nx run react-18-tests-v9:build
+
+yarn nx run react-18-tests-v9:type-check
+```
+
+**CI:**
+
+nx defines `build` targets to be executed prior to `type-check`.
